@@ -1,0 +1,125 @@
+diff -urN -x .build -x .inst -x .sinst -x configure -x 'Makefile.in*' -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x 'intltool*' -x autom4te.cache -x '*compile' -x texinfo.tex libassetml-1.2.1-orig/CYGWIN-PATCHES/README libassetml-1.2.1/CYGWIN-PATCHES/README
+--- libassetml-1.2.1-orig/CYGWIN-PATCHES/README	1969-12-31 18:00:00.000000000 -0600
++++ libassetml-1.2.1/CYGWIN-PATCHES/README	2005-12-14 16:07:16.979750000 -0600
+@@ -0,0 +1,84 @@
++libassetml
++------------------------------------------
++AssetML defines an xml file that let application developer to use it as
++a resource database.  The idea is to be have a way to search content on
++your hard drive with metadata (like name, category, file type,
++description) instead of just a file name. This way, users can browse
++content more easily and developpers can share content more easily.
++
++AssetML is used by the OFSET and GCompris projects.
++
++Runtime requirements:
++  cygwin-1.5.18-1
++  glib2-runtime-2.6.6-1
++  libpopt0-1.6.4-4
++  libxml2-2.6.22-1
++
++Build requirements:
++(besides corresponding -devel packages)
++  cygwin-1.5.18-1
++  autoconf2.5-2.59-3
++  automake1.9-1.9.6-1
++  binutils-20050610-1
++  gawk-3.1.5-2
++  gcc-core-3.4.4-1
++  libtool1.5-1.5.20-1
++  make-3.80-1
++  sed-4.1.4-1
++
++Canonical website:
++  http://ofset.sourceforge.net/
++
++Canonical download:
++  http://prdownloads.sourceforge.net/ofset/
++
++-------------------------------------------
++
++Build instructions:
++  unpack libassetml-1.2.1-X-src.tar.bz2
++    if you use setup to install this src package, it will be
++	 unpacked under /usr/src automatically
++  cd /usr/src
++  ./libassetml-1.2.1-X.sh all
++
++This will create:
++  /usr/src/libassetml-1.2.1-X-src.tar.bz2
++  /usr/src/libassetml-1.2.1-X.tar.bz2
++
++-------------------------------------------
++
++Files included in the binary package:
++
++  /usr/bin/assetml-query.exe
++  /usr/bin/cygassetml-0.dll
++  /usr/include/libassetml-1.0/libassetml/assetml.h
++  /usr/lib/libassetml.dll.a
++  /usr/lib/libassetml.la
++  /usr/lib/pkgconfig/libassetml.pc
++  /usr/share/doc/Cygwin/libassetml-1.2.1.README
++  /usr/share/doc/libassetml-1.2.1/ABOUT-NLS
++  /usr/share/doc/libassetml-1.2.1/AUTHORS
++  /usr/share/doc/libassetml-1.2.1/ChangeLog
++  /usr/share/doc/libassetml-1.2.1/COPYING
++  /usr/share/doc/libassetml-1.2.1/INSTALL
++  /usr/share/doc/libassetml-1.2.1/NEWS
++  /usr/share/doc/libassetml-1.2.1/README
++  /usr/share/doc/libassetml-1.2.1/THANKS
++  /usr/share/doc/libassetml-1.2.1/TODO
++  /usr/share/gnome/help/libassetml/C/libassetml.html
++  /usr/share/gnome/help/libassetml/C/topic.dat
++  /usr/share/info/libassetml.info.gz
++  /usr/share/locale/fr/LC_MESSAGES/libassetml.mo
++  /usr/share/locale/it/LC_MESSAGES/libassetml.mo
++  /usr/share/locale/ja/LC_MESSAGES/libassetml.mo
++
++------------------
++
++Port Notes:
++
++----- version 1.2.1-1 -----
++Initial release for Cygwin.
++
++
++Cygwin port maintained by:
++http://cygwinports.dotsrc.org/
+diff -urN -x .build -x .inst -x .sinst -x configure -x 'Makefile.in*' -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x 'intltool*' -x autom4te.cache -x '*compile' -x texinfo.tex libassetml-1.2.1-orig/CYGWIN-PATCHES/setup.hint libassetml-1.2.1/CYGWIN-PATCHES/setup.hint
+--- libassetml-1.2.1-orig/CYGWIN-PATCHES/setup.hint	1969-12-31 18:00:00.000000000 -0600
++++ libassetml-1.2.1/CYGWIN-PATCHES/setup.hint	2005-12-14 16:07:16.979750000 -0600
+@@ -0,0 +1,9 @@
++category: Libs Games
++requires: cygwin glib2-runtime libpopt0 libxml2
++sdesc: "OFSET project resource database library"
++ldesc: "AssetML defines an xml file that let application developer to
++use it as a resource database.  The idea is to be have a way to search
++content on your hard drive with metadata (like name, category, file
++type, description) instead of just a file name. This way, users can
++browse content more easily and developpers can share content more
++easily."
+diff -urN -x .build -x .inst -x .sinst -x configure -x 'Makefile.in*' -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x 'intltool*' -x autom4te.cache -x '*compile' -x texinfo.tex libassetml-1.2.1-orig/docs/C/Makefile.am libassetml-1.2.1/docs/C/Makefile.am
+--- libassetml-1.2.1-orig/docs/C/Makefile.am	2003-10-07 06:22:37.000000000 -0500
++++ libassetml-1.2.1/docs/C/Makefile.am	2005-12-14 15:24:31.589125000 -0600
+@@ -12,7 +12,7 @@
+ 
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(libassetml_helpdir)
+-	$(INSTALL_DATA)  $(srcdir)/libassetml.html $(DESTDIR)$(libassetml_helpdir)
++	$(INSTALL_DATA)  libassetml.html $(DESTDIR)$(libassetml_helpdir)
+ 	$(INSTALL_DATA)  $(srcdir)/topic.dat $(DESTDIR)$(libassetml_helpdir)
+ 
+ %.html: %.texi
+diff -urN -x .build -x .inst -x .sinst -x configure -x 'Makefile.in*' -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x 'intltool*' -x autom4te.cache -x '*compile' -x texinfo.tex libassetml-1.2.1-orig/src/Makefile.am libassetml-1.2.1/src/Makefile.am
+--- libassetml-1.2.1-orig/src/Makefile.am	2003-10-25 04:10:26.000000000 -0500
++++ libassetml-1.2.1/src/Makefile.am	2005-12-14 15:10:52.745375000 -0600
+@@ -15,6 +15,8 @@
+ 
+ lib_LTLIBRARIES = libassetml.la
+ 
++libassetml_la_LDFLAGS = -no-undefined
++
+ libassetml_la_LIBADD = \
+ 	$(GLIB_LIBS) $(XML_LIBS)  \
+ 	$(GOBJECT_LIBS)
