@@ -1,5 +1,5 @@
 category: Libs Games
-requires: cygwin glib2-runtime libpopt0 libxml2
+requires: glib2-runtime libpopt0 libxml2
 sdesc: "OFSET project resource database library"
 ldesc: "AssetML defines an xml file that let application developer to
 use it as a resource database.  The idea is to be have a way to search
